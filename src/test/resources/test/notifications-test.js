@@ -32,5 +32,6 @@ exports.testSend = function () {
     print(status);
 
     assert.assertNotNull(status);
+    assert.assertTrue(typeof status === 'number');
 
 };

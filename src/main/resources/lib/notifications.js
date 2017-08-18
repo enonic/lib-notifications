@@ -28,7 +28,7 @@ exports.generateKeyPair = function () {
  * @param {string} notification.auth The auth key received as part of the Subscription data.
  * @param {string} notification.receiverKey The p256dh key received as part of the Subscription data.
  * @param {[string|object]} notification.payload Message payload to send.
- * @returns {status} Response status from the HTTP request made. 200 if the notification is successfully sent.
+ * @returns {status} Response status from the HTTP request made. 2xx if the notification is successfully sent (e.g. 201 CREATED).
  */
 exports.send = function (notification) {
     var payload = notification.payload == null ? '' : notification.payload;

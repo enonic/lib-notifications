@@ -1,1 +1,137 @@
 = Push Notifications Library
+
+image::https://img.shields.io/badge/xp-6.12+-blue.svg[role="right"]
+
+This library allows sending Push Notifications to a web application.
+
+To start using this library, add the following into your `build.gradle` file:
+
+[source,groovy]
+----
+dependencies {
+  include 'com.enonic.lib:lib-notifications:1.0.0'
+}
+----
+
+== Usage
+
+The use of Push Notifications requires a combination of *client* (browser) and *server* (XP service) code.
+
+Here is an overview of how to implement the https://developers.google.com/web/fundamentals/getting-started/codelabs/push-notifications/[client part for sending notifications].
+
+This library supports the implementation of Push Notifications on the *server side*.
+
+To use this library in your server JavaScript code, it first needs to be required:
+
+[source,js]
+----
+var notifications = require('/lib/notifications');
+----
+
+To generate a private/public key pair, call the `generateKeyPair` function without parameters.
+
+[source,js]
+----
+var keyPair = notifications.generateKeyPair();
+----
+
+The function will return an object with the `privateKey`, `publicKey` properties represented as Base64 strings. These are normally the ones you will need.
+The object will also include `privateKeyBytes` and `publicKeyBytes`, the keys represented as a binary stream object.
+
+[source,js]
+----
+keyPair = {
+    'privateKey': 'GptHhouCpngOtvlG60lu3vtjJN3pGnfGNyDWUjNz7-4', <1>
+    'publicKey': 'BG3YaWgwCl6XJmaihPnTRQ3MhxizJg1do6iI9KCanYo0', <2>
+    'privateKeyBytes': <stream-object>, <3>
+    'publicKeyBytes': <stream-object> <4>
+};
+----
+<1> A new private key encoded as Base64.
+<2> A new public key encoded as Base64.
+<3> The private key as a binary stream.
+<4> The public key as a binary stream.
+
+
+== API
+
+The following functions are defined in this library.
+
+=== `generateKeyPair()`
+
+Generate a VAPID public/private key pair.
+
+*Returns*
+
+The function will return an object with a new key pair:
+
+* `*privateKey*` (_string_) A new private key encoded as Base64.
+* `*publicKey*` (_string_) A new public key encoded as Base64.
+* `*privateKeyBytes*` (_object_) The private key as a binary stream.
+* `*publicKeyBytes*` (_object_) The public key as a binary stream.
+
+IMPORTANT: The private key must never be sent to the client.
+
+
+=== `send(options)`
+
+Send a push notification to a client.
+
+*Parameters*
+
+The request function takes a parameter object with options. All the parameters are mandatory except `payload`.
+
+* `options` (_object_) Parameters to send the push notification.
+** `*publicKey*` (_string_) VAPID public key.
+** `*privateKey*` (_string_) VAPID private key.
+** `*endpoint*` (_string_) The Push service endpoint URL, received as part of the Subscription data.
+** `*auth*` (_string_) The auth key received as part of the Subscription data.
+** `*receiverKey*` (_string_) The *p256dh* key received as part of the Subscription data.
+** `*payload*` (_string_|_object_) Message payload to send. Either a string or an object that will be serialized as JSON.
+
+
+*Returns*
+
+The function will return the status code from the HTTP request made. *2xx* if the notification is successfully sent (e.g. `201` _CREATED_).
+
+== Examples
+
+=== `Generate key pair`
+[source,js]
+----
+var notifications = require('/lib/notifications');
+
+var keyPair = notifications.generateKeyPair();
+log.info('Public key: ' + keyPair.publicKey);
+log.info('Private key: ' + keyPair.privateKey);
+----
+
+
+=== `Send Push Notification`
+[source,js]
+----
+var notifications = require('/lib/notifications');
+
+var status = notifications.send({
+    privateKey: 'SmItipweO3J9uzT927AhxVBtBvmJFk4CGD2Y7e5Qjnk',
+    publicKey: 'BBfc7IpYHxS2OE2mX8L7XWYrqSBrAPYhZMjN5_Eszb3sWzlEGBu2lmgCU2VmdP1H8iJsuw',
+    endpoint: 'https://fcm.googleapis.com/fcm/send/dttNMLkH4jg:APA91bGpKkDCoJe65no',
+    auth: 'tkCu6tlXTgcWMVgW7z9qQA==',
+    receiverKey: 'BKHSDNB3huPof8GdBXZNKePUrFL4gRgGn4RKKJ-sQtGLphyRfJsUEz9qJWEYeKXXiei4=',
+    payload: {
+        message: 'Hello',
+        sender: 'Enonic XP'
+    }
+});
+
+if (status >= 200 && status < 300) {
+    log.info('Push notification sent successfully');
+} else {
+    log.warning('Push notification failed. Status: ' + status);
+}
+----
+
+
+== Compatibility
+
+This library requires Enonic XP release *6.12.0* or higher.
