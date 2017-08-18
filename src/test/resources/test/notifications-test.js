@@ -6,8 +6,6 @@ exports.testGenerateKeyPair = function () {
 
     var keyPair = notificationsLib.generateKeyPair();
 
-    print(JSON.stringify(keyPair));
-
     assert.assertNotNull(keyPair.privateKey);
     assert.assertNotNull(keyPair.publicKey);
     assert.assertNotNull(keyPair.privateKeyBytes);
@@ -28,8 +26,6 @@ exports.testSend = function () {
             message: 'Hello'
         }
     });
-
-    print(status);
 
     assert.assertNotNull(status);
     assert.assertTrue(typeof status === 'number');
