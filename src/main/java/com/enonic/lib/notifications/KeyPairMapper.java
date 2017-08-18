@@ -23,11 +23,11 @@ public final class KeyPairMapper
     @Override
     public void serialize( final MapGenerator gen )
     {
-        gen.value( "privateKey", ByteSource.wrap( privateKey ) );
-        gen.value( "publicKey", ByteSource.wrap( publicKey ) );
+        gen.value( "privateKeyBytes", ByteSource.wrap( privateKey ) );
+        gen.value( "publicKeyBytes", ByteSource.wrap( publicKey ) );
 
-        gen.value( "privateKeyB64", BaseEncoding.base64Url().omitPadding().encode( privateKey ) );
-        gen.value( "publicKeyB64", BaseEncoding.base64Url().omitPadding().encode( publicKey ) );
+        gen.value( "privateKey", BaseEncoding.base64Url().omitPadding().encode( privateKey ) );
+        gen.value( "publicKey", BaseEncoding.base64Url().omitPadding().encode( publicKey ) );
     }
 
 }
