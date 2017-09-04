@@ -5,7 +5,7 @@ Push notifications library for Enonic XP
 [![codecov](https://codecov.io/gh/enonic/lib-notifications/branch/master/graph/badge.svg)](https://codecov.io/gh/enonic/lib-notifications)
 [![License](https://img.shields.io/github/license/enonic/lib-notifications.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
-This library provides support for the server implementation to send Web Push Notifications.
+This library provides support for the server implementation to send [Web Push Notifications](https://datatracker.ietf.org/wg/webpush/documents/).
 
 See documentation here: https://enonic-docs.s3.amazonaws.com/com.enonic.lib/lib-notifications/index.html
 
