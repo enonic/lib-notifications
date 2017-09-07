@@ -7,7 +7,7 @@ Push notifications library for Enonic XP
 
 This library provides support for the server implementation to send [Web Push Notifications](https://datatracker.ietf.org/wg/webpush/documents/).
 
-See documentation here: https://enonic-docs.s3.amazonaws.com/com.enonic.lib/lib-notifications/index.html
+See documentation here: https://enonic-docs.s3.amazonaws.com/com.enonic.lib/notifications/index.html
 
 
 ## Building
