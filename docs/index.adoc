@@ -9,7 +9,7 @@ To start using this library, add the following into your `build.gradle` file:
 [source,groovy]
 ----
 dependencies {
-  include 'com.enonic.lib:notifications:1.0.0'
+  include 'com.enonic.lib:notifications:1.1.0'
 }
 ----
 
@@ -32,8 +32,10 @@ var notifications = require('/lib/notifications');
 
 To identify an application with a push service we need a pair of application server keys:
 
-- The *public key* is sent to the client, so that it can subscribe to notifications.
+- The *public key* will be sent to the client, so that it can subscribe to notifications.
 - The *private key* is kept on the server, for sending push notifications.
+
+The key pair only needs to be generated once per installed app, and stored in a secure place on the server.
 
 To generate a private/public key pair, call the `generateKeyPair` function without parameters.
 

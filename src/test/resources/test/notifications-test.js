@@ -1,4 +1,4 @@
-var assert = require('/lib/xp/assert');
+var testing = require('/lib/xp/testing.js');
 var notificationsLib = require('/lib/notifications');
 
 
@@ -6,10 +6,10 @@ exports.testGenerateKeyPair = function () {
 
     var keyPair = notificationsLib.generateKeyPair();
 
-    assert.assertNotNull(keyPair.privateKey);
-    assert.assertNotNull(keyPair.publicKey);
-    assert.assertNotNull(keyPair.privateKeyBytes);
-    assert.assertNotNull(keyPair.publicKeyBytes);
+    testing.assertNotNull(keyPair.privateKey);
+    testing.assertNotNull(keyPair.publicKey);
+    testing.assertNotNull(keyPair.privateKeyBytes);
+    testing.assertNotNull(keyPair.publicKeyBytes);
 
 };
 
@@ -27,7 +27,7 @@ exports.testSend = function () {
         }
     });
 
-    assert.assertNotNull(status);
-    assert.assertTrue(typeof status === 'number');
+    testing.assertNotNull(status);
+    testing.assertTrue(typeof status === 'number');
 
 };
