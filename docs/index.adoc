@@ -93,7 +93,7 @@ var status = notifications.send({
 
 The following functions are defined in this library.
 
-=== `generateKeyPair()`
+=== `generateKeyPair`
 
 Generate a https://datatracker.ietf.org/doc/draft-ietf-webpush-vapid/[VAPID] public/private key pair.
 
@@ -109,7 +109,7 @@ The function will return an object with a new key pair:
 IMPORTANT: The private key must never be sent to the client.
 
 
-=== `send(options)`
+=== `send`
 
 Send a push notification to a client.
 
