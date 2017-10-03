@@ -10,6 +10,7 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.jose4j.lang.JoseException;
 
 import nl.martijndwars.webpush.Notification;
+import nl.martijndwars.webpush.PushService;
 import nl.martijndwars.webpush.Utils;
 
 public final class PushBean
