@@ -9,7 +9,7 @@ To start using this library, add the following into your `build.gradle` file:
 [source,groovy]
 ----
 dependencies {
-  include 'com.enonic.lib:notifications:1.1.0'
+  include 'com.enonic.lib:notifications:1.2.0'
 }
 ----
 
@@ -132,6 +132,27 @@ All the parameters are mandatory except `payload`.
 The function will return the status code from the HTTP request made. +
 The status will be *2xx* if the notification is successfully sent (e.g. `200` _OK_ or `201` _CREATED_).
 
+=== `sendAsync`
+
+Send a push notification to a client. The notification will be sent **asynchronously**. +
+This function returns immediately to the caller, while the sending is executed in the background. +
+The result of the notification can be obtained by passing a callback function in the _error_ or _success_ parameters.
+
+*Parameters*
+
+The request function takes a parameter object with options. +
+All the parameters are mandatory except `payload`, `success` and `error`.
+
+* `options` (_object_) Parameters to send the push notification.
+** `*publicKey*` (_string_) VAPID public key (encoded as Base64).
+** `*privateKey*` (_string_) VAPID private key (encoded as Base64).
+** `*endpoint*` (_string_) The Push service endpoint URL, received as part of the Subscription data.
+** `*auth*` (_string_) The auth key received as part of the Subscription data.
+** `*receiverKey*` (_string_) The *p256dh* key received as part of the Subscription data.
+** `*payload*` (_string_|_object_) Message payload to send. Either a string or an object that will be serialized as JSON.
+** `*success*` (_function_) A function to be called if the sending succeeds. The function gets passed the status from the HTTP request made.
+** `*error*` (_function_) A function to be called if the sending fails.
+
 == Examples
 
 === `Generate key pair`
@@ -169,6 +190,29 @@ if (status >= 200 && status < 300) {
 }
 ----
 
+=== `Send Push Notification in the background`
+[source,js]
+----
+var notifications = require('/lib/notifications');
+
+notifications.sendAsync({
+    privateKey: 'SmItipweO3J9uzT927AhxVBtBvmJFk4CGD2Y7e5Qjnk',
+    publicKey: 'BBfc7IpYHxS2OE2mX8L7XWYrqSBrAPYhZMjN5_Eszb3sWzlEGBu2lmgCU2VmdP1H8iJsuw',
+    endpoint: 'https://fcm.googleapis.com/fcm/send/dttNMLkH4jg:APA91bGpKkDCoJe65no',
+    auth: 'tkCu6tlXTgcWMVgW7z9qQA==',
+    receiverKey: 'BKHSDNB3huPof8GdBXZNKePUrFL4gRgGn4RKKJ-sQtGLphyRfJsUEz9qJWEYeKXXiei4=',
+    payload: {
+        message: 'Hello',
+        sender: 'Enonic XP'
+    },
+    success: function() {
+        log.info('Push notification sent successfully');
+    },
+    error: function() {
+        log.warning('Push notification failed.');
+    }
+});
+----
 
 == Compatibility
 

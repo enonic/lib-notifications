@@ -64,7 +64,7 @@ exports.send = function (notification) {
  * @param {string} notification.auth The auth key received as part of the Subscription data.
  * @param {string} notification.receiverKey The p256dh key received as part of the Subscription data.
  * @param {string|object} [notification.payload] Message payload to send.
- * @param {function} notification.success A function to be called if the sending succeeds. The function gets passed the status from the HTTP request made. 2xx if the notification is successfully sent (e.g. 201 CREATED).
+ * @param {function} notification.success A function to be called if the sending succeeds. The function gets passed the status from the HTTP request made.
  * @param {function} notification.error A function to be called if the sending fails.
  */
 exports.sendAsync = function (notification) {
