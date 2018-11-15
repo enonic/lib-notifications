@@ -131,6 +131,8 @@ All the parameters are mandatory except `payload`.
 
 The function will return the status code from the HTTP request made. +
 The status will be *2xx* if the notification is successfully sent (e.g. `200` _OK_ or `201` _CREATED_).
+A status of `404` or `410` indicates that the subscription data should be deleted from the backend.
+See more https://developers.google.com/web/fundamentals/push-notifications/common-issues-and-reporting-bugs#http_status_codes[details about status codes here].
 
 === `sendAsync`
 
