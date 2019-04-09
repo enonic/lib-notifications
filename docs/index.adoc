@@ -1,6 +1,6 @@
 = Push Notifications Library
 
-image::https://img.shields.io/badge/xp-6.12+-blue.svg[role="right"]
+image::https://img.shields.io/badge/xp-7.+-blue.svg[role="right"]
 
 This library allows sending Push Notifications to a web application.
 
@@ -9,7 +9,7 @@ To start using this library, add the following into your `build.gradle` file:
 [source,groovy]
 ----
 dependencies {
-  include 'com.enonic.lib:notifications:1.2.0'
+  include 'com.enonic.lib:notifications:2.0.0'
 }
 ----
 
@@ -218,4 +218,4 @@ notifications.sendAsync({
 
 == Compatibility
 
-This library requires Enonic XP release *6.12.0* or higher.
+This library requires Enonic XP release *7.0.0* or higher.
