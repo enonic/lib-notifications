@@ -31,8 +31,8 @@ public final class KeyPairGenerationBean
     {
         final KeyPair keyPair = generateECKeyPair();
 
-        final byte[] publicKey = Utils.savePublicKey( (ECPublicKey) keyPair.getPublic() );
-        final byte[] privateKey = Utils.savePrivateKey( (ECPrivateKey) keyPair.getPrivate() );
+        final byte[] publicKey = Utils.encode( (ECPublicKey) keyPair.getPublic() );
+        final byte[] privateKey = Utils.encode( (ECPrivateKey) keyPair.getPrivate() );
 
         return new KeyPairMapper( privateKey, publicKey );
     }
