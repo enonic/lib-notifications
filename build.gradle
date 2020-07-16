@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     compile "com.enonic.xp:script-api:${xpVersion}"
-    compileOnly "org.bouncycastle:bcprov-jdk15on:1.62"
+    compileOnly "org.bouncycastle:bcprov-jdk15on:1.66"
     compile( "nl.martijndwars:web-push:4.0.0" ) {
         exclude group: 'com.google.guava', module: 'guava'
         exclude group: 'org.bouncycastle', module: 'bcprov-jdk15on'
