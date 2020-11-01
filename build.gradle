@@ -20,7 +20,7 @@ dependencies {
         exclude group: 'org.bouncycastle', module: 'bcprov-jdk15on'
     }
 
-    testCompile "junit:junit:4.13"
+    testCompile "junit:junit:4.13.1"
     testCompile "com.enonic.xp:testing:${xpVersion}"
     testCompile( "nl.martijndwars:web-push:4.0.0" )
 }
