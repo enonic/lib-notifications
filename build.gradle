@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     compile "com.enonic.xp:script-api:${xpVersion}"
-    compileOnly "org.bouncycastle:bcprov-jdk15on:1.67"
+    compileOnly "org.bouncycastle:bcprov-jdk15on:1.69"
     compile "nl.martijndwars:web-push:5.1.1"
 
     testCompile "junit:junit:4.13.2"
