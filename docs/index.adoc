@@ -50,10 +50,10 @@ The object will also include `privateKeyBytes` and `publicKeyBytes`, the keys re
 [source,js]
 ----
 keyPair = {
-    'privateKey': 'GptHhouCpngOtvlG60lu3vtjJN3pGnfGNyDWUjNz7-4', <1>
-    'publicKey': 'BG3YaWgwCl6XJmaihPnTRQ3MhxizJg1do6iI9KCanYo0', <2>
-    'privateKeyBytes': <stream-object>, <3>
-    'publicKeyBytes': <stream-object> <4>
+    'privateKey': 'GptHhouCpngOtvlG60lu3vtjJN3pGnfGNyDWUjNz7-4', // <1>
+    'publicKey': 'BG3YaWgwCl6XJmaihPnTRQ3MhxizJg1do6iI9KCanYo0', // <2>
+    'privateKeyBytes': <stream-object>, // <3>
+    'publicKeyBytes': <stream-object> // <4>
 };
 ----
 <1> A new private key encoded as Base64.
