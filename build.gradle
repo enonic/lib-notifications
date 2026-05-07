@@ -15,6 +15,7 @@ dependencies {
     implementation "com.enonic.xp:script-api:${xpVersion}"
     compileOnly "org.bouncycastle:bcprov-jdk15on:1.70"
     implementation "org.apache.httpcomponents:httpasyncclient:4.1.5"
+    implementation "org.bitbucket.b_c:jose4j:0.9.6"
     implementation "nl.martijndwars:web-push:5.1.2"
 
     testImplementation "junit:junit:4.13.2"
