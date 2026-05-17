@@ -13,13 +13,13 @@ repositories {
 
 dependencies {
     implementation xplibs.api.script
-    compileOnly "org.bouncycastle:bcprov-jdk15on:1.70"
-    implementation "org.apache.httpcomponents:httpasyncclient:4.1.5"
-    implementation "org.bitbucket.b_c:jose4j:0.9.6"
-    implementation "nl.martijndwars:web-push:5.1.2"
+    compileOnly libs.bcprov.jdk15on
+    implementation libs.httpasyncclient
+    implementation libs.jose4j
+    implementation libs.web.push
 
     testImplementation "com.enonic.xp:testing:${xpVersion}"
-    testImplementation "org.bouncycastle:bcprov-jdk15on:1.70"
+    testImplementation libs.bcprov.jdk15on
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
