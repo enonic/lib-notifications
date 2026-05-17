@@ -1,0 +1,11 @@
+[versions]
+bcprov-jdk15on  = "1.70"
+httpasyncclient = "4.1.5"
+jose4j          = "0.9.6"
+web-push        = "5.1.2"
+
+[libraries]
+bcprov-jdk15on  = { module = "org.bouncycastle:bcprov-jdk15on",           version.ref = "bcprov-jdk15on" }
+httpasyncclient = { module = "org.apache.httpcomponents:httpasyncclient", version.ref = "httpasyncclient" }
+jose4j          = { module = "org.bitbucket.b_c:jose4j",                  version.ref = "jose4j" }
+web-push        = { module = "nl.martijndwars:web-push",                  version.ref = "web-push" }
