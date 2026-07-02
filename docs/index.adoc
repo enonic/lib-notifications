@@ -2,6 +2,8 @@
 
 image::https://img.shields.io/badge/xp-8.+-blue.svg[role="right"]
 
+NOTE: Versions 3.x target XP 8+.
+
 This library allows sending Push Notifications to a web application.
 
 To start using this library, add the following into your `build.gradle` file:
