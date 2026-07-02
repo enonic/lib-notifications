@@ -1,7 +1,5 @@
 = Push Notifications Library
 
-image::https://img.shields.io/badge/xp-8.+-blue.svg[role="right"]
-
 NOTE: Versions 3.x target XP 8+.
 
 This library allows sending Push Notifications to a web application.
@@ -63,7 +61,6 @@ keyPair = {
 <3> The private key as a binary stream.
 <4> The public key as a binary stream.
 
-
 === Sending push notifications
 
 Sending push notifications from the server to a client (that has previously subscribed) requires the following parameters:
@@ -90,7 +87,6 @@ var status = notifications.send({
 });
 ----
 
-
 == API
 
 The following functions are defined in this library.
@@ -110,7 +106,6 @@ The function will return an object with a new key pair:
 
 IMPORTANT: The private key must never be sent to the client.
 
-
 === `send`
 
 Send a push notification to a client.
@@ -127,7 +122,6 @@ All the parameters are mandatory except `payload`.
 ** `*auth*` (_string_) The auth key received as part of the Subscription data.
 ** `*receiverKey*` (_string_) The *p256dh* key received as part of the Subscription data.
 ** `*payload*` (_string_|_object_) Message payload to send. Either a string or an object that will be serialized as JSON.
-
 
 *Returns*
 
@@ -168,7 +162,6 @@ var keyPair = notifications.generateKeyPair();
 log.info('Public key: ' + keyPair.publicKey);
 log.info('Private key: ' + keyPair.privateKey);
 ----
-
 
 === `Send Push Notification`
 [source,js]
