@@ -32,6 +32,8 @@ declare module "/lib/notifications" {
         receiverKey: string;
         /** Message payload. Objects are JSON-stringified before being sent. */
         payload?: string | Record<string, unknown>;
+        /** Optional VAPID "sub" claim — a `mailto:` or `https:` contact URI identifying the sender to the push service. */
+        subject?: string;
     }
 
     /**
