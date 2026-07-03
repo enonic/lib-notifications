@@ -1,0 +1,33 @@
+{
+  "name": "@enonic-types/lib-notifications",
+  "version": "0.0.0",
+  "description": "Type definitions for the Enonic XP Notifications library",
+  "types": "index.d.ts",
+  "files": [
+    "*"
+  ],
+  "keywords": [
+    "enonic",
+    "enonic-xp",
+    "lib-notifications",
+    "notifications",
+    "webpush",
+    "types",
+    "typescript"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/enonic/lib-notifications#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enonic/lib-notifications.git"
+  },
+  "bugs": {
+    "url": "https://github.com/enonic/lib-notifications/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@enonic-types/core": "^8.0.0"
+  }
+}
