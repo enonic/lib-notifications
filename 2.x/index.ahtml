@@ -494,7 +494,7 @@ Versions 2.x target XP 7+.
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-groovy" data-lang="groovy">dependencies {
-  include 'com.enonic.lib:lib-notifications:2.0.0'
+  include 'com.enonic.lib:lib-notifications:2.0.2'
 }</code></pre>
 </div>
 </div>
@@ -855,7 +855,7 @@ notifications.sendAsync({
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-07-03 06:58:20 UTC
+Last updated 2026-07-03 07:49:17 UTC
 </div>
 </div>
 </body>
