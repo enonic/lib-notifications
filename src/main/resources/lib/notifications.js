@@ -28,6 +28,7 @@ exports.generateKeyPair = function () {
  * @param {string} notification.auth The auth key received as part of the Subscription data.
  * @param {string} notification.receiverKey The p256dh key received as part of the Subscription data.
  * @param {string|object} [notification.payload] Message payload to send.
+ * @param {string} [notification.subject] Optional VAPID "sub" claim — a mailto: or https: contact URI.
  * @returns {status} Response status from the HTTP request made. 2xx if the notification is successfully sent (e.g. 201 CREATED).
  */
 exports.send = function (notification) {
@@ -49,6 +50,7 @@ exports.send = function (notification) {
     pushBean.auth = notification.auth;
     pushBean.receiverKey = notification.receiverKey;
     pushBean.payload = payload;
+    pushBean.subject = __.nullOrValue(notification.subject);
 
     return __.toNativeObject(pushBean.send());
 };
@@ -64,6 +66,7 @@ exports.send = function (notification) {
  * @param {string} notification.auth The auth key received as part of the Subscription data.
  * @param {string} notification.receiverKey The p256dh key received as part of the Subscription data.
  * @param {string|object} [notification.payload] Message payload to send.
+ * @param {string} [notification.subject] Optional VAPID "sub" claim — a mailto: or https: contact URI.
  * @param {function} notification.success A function to be called if the sending succeeds. The function gets passed the status from the HTTP request made.
  * @param {function} notification.error A function to be called if the sending fails.
  */
@@ -86,6 +89,7 @@ exports.sendAsync = function (notification) {
     pushBean.auth = notification.auth;
     pushBean.receiverKey = notification.receiverKey;
     pushBean.payload = payload;
+    pushBean.subject = __.nullOrValue(notification.subject);
     pushBean.success = __.nullOrValue(notification.success);
     pushBean.error = __.nullOrValue(notification.error);
 

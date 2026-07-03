@@ -4,19 +4,24 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.Security;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.util.EntityUtils;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.jose4j.lang.JoseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import nl.martijndwars.webpush.Encoding;
 import nl.martijndwars.webpush.Notification;
 import nl.martijndwars.webpush.PushService;
 import nl.martijndwars.webpush.Utils;
 
 public final class PushBean
 {
+    private static final Logger LOG = LoggerFactory.getLogger( PushBean.class );
+
     static
     {
         if ( Security.getProvider( BouncyCastleProvider.PROVIDER_NAME ) == null )
@@ -37,6 +42,8 @@ public final class PushBean
 
     private String payload;
 
+    private String subject;
+
     private Consumer<Integer> success;
 
     private Consumer<Integer> error;
@@ -49,7 +56,7 @@ public final class PushBean
 
     public void sendAsync()
     {
-        Executors.newSingleThreadExecutor().submit( this::doSendAsync );
+        Thread.startVirtualThread( this::doSendAsync );
     }
 
     private int doSend()
@@ -61,8 +68,30 @@ public final class PushBean
         pushService.setPublicKey( Utils.loadPublicKey( publicKey ) );
         pushService.setPrivateKey( Utils.loadPrivateKey( privateKey ) );
 
-        final HttpResponse httpResponse = pushService.send( notification );
-        return httpResponse.getStatusLine().getStatusCode();
+        if ( subject != null && !subject.isBlank() )
+        {
+            pushService.setSubject( subject );
+        }
+
+        final HttpResponse httpResponse = pushService.send( notification, Encoding.AES128GCM );
+        final int status = httpResponse.getStatusLine().getStatusCode();
+        if ( ( status < 200 || status >= 300 ) && LOG.isDebugEnabled() )
+        {
+            LOG.debug( "Web push rejected: status={} endpoint={} body={}", status, endpoint, readBody( httpResponse ) );
+        }
+        return status;
+    }
+
+    private static String readBody( final HttpResponse httpResponse )
+    {
+        try
+        {
+            return httpResponse.getEntity() != null ? EntityUtils.toString( httpResponse.getEntity() ) : "";
+        }
+        catch ( final IOException e )
+        {
+            return "<unreadable: " + e.getMessage() + ">";
+        }
     }
 
     private void doSendAsync()
@@ -111,6 +140,11 @@ public final class PushBean
     public void setPayload( final String payload )
     {
         this.payload = payload;
+    }
+
+    public void setSubject( final String subject )
+    {
+        this.subject = subject;
     }
 
     public void setReceiverKey( final String receiverKey )

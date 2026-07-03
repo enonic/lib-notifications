@@ -71,6 +71,7 @@ Sending push notifications from the server to a client (that has previously subs
 - `*auth*` Obtained on the client, in the https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription[Subscription] object.
 - `*receiverKey*` Obtained on the client, in the https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription[Subscription] object.
 - `*payload*` Optional object or string to be pushed to the client.
+- `*subject*` Optional VAPID `sub` contact (a `mailto:` or `https:` URI).
 
 [source,js]
 ----
@@ -113,7 +114,7 @@ Send a push notification to a client.
 *Parameters*
 
 The request function takes a parameter object with options. +
-All the parameters are mandatory except `payload`.
+All the parameters are mandatory except `payload` and `subject`.
 
 * `options` (_object_) Parameters to send the push notification.
 ** `*publicKey*` (_string_) VAPID public key (encoded as Base64).
@@ -122,6 +123,7 @@ All the parameters are mandatory except `payload`.
 ** `*auth*` (_string_) The auth key received as part of the Subscription data.
 ** `*receiverKey*` (_string_) The *p256dh* key received as part of the Subscription data.
 ** `*payload*` (_string_|_object_) Message payload to send. Either a string or an object that will be serialized as JSON.
+** `*subject*` (_string_) _Optional._ VAPID `sub` claim — a `mailto:` or `https:` contact URI identifying the sender to the push service.
 
 *Returns*
 
@@ -139,7 +141,7 @@ The result of the notification can be obtained by passing a callback function in
 *Parameters*
 
 The request function takes a parameter object with options. +
-All the parameters are mandatory except `payload`, `success` and `error`.
+All the parameters are mandatory except `payload`, `subject`, `success` and `error`.
 
 * `options` (_object_) Parameters to send the push notification.
 ** `*publicKey*` (_string_) VAPID public key (encoded as Base64).
@@ -148,6 +150,7 @@ All the parameters are mandatory except `payload`, `success` and `error`.
 ** `*auth*` (_string_) The auth key received as part of the Subscription data.
 ** `*receiverKey*` (_string_) The *p256dh* key received as part of the Subscription data.
 ** `*payload*` (_string_|_object_) Message payload to send. Either a string or an object that will be serialized as JSON.
+** `*subject*` (_string_) _Optional._ VAPID `sub` claim — a `mailto:` or `https:` contact URI identifying the sender to the push service.
 ** `*success*` (_function_) A function to be called if the sending succeeds. The function gets passed the status from the HTTP request made.
 ** `*error*` (_function_) A function to be called if the sending fails.
 
