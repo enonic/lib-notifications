@@ -601,6 +601,9 @@ The object will also include <code>privateKeyBytes</code> and <code>publicKeyByt
 <li>
 <p><code><strong>payload</strong></code> Optional object or string to be pushed to the client.</p>
 </li>
+<li>
+<p><code><strong>subject</strong></code> Optional VAPID <code>sub</code> contact (a <code>mailto:</code> or <code>https:</code> URI).</p>
+</li>
 </ul>
 </div>
 <div class="listingblock">
@@ -677,7 +680,7 @@ The private key must never be sent to the client.
 </div>
 <div class="paragraph">
 <p>The request function takes a parameter object with options.<br>
-All the parameters are mandatory except <code>payload</code>.</p>
+All the parameters are mandatory except <code>payload</code> and <code>subject</code>.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -702,6 +705,9 @@ All the parameters are mandatory except <code>payload</code>.</p>
 </li>
 <li>
 <p><code><strong>payload</strong></code> (<em>string</em>|<em>object</em>) Message payload to send. Either a string or an object that will be serialized as JSON.</p>
+</li>
+<li>
+<p><code><strong>subject</strong></code> (<em>string</em>) <em>Optional.</em> VAPID <code>sub</code> claim — a <code>mailto:</code> or <code>https:</code> contact URI identifying the sender to the push service.</p>
 </li>
 </ul>
 </div>
@@ -730,7 +736,7 @@ The result of the notification can be obtained by passing a callback function in
 </div>
 <div class="paragraph">
 <p>The request function takes a parameter object with options.<br>
-All the parameters are mandatory except <code>payload</code>, <code>success</code> and <code>error</code>.</p>
+All the parameters are mandatory except <code>payload</code>, <code>subject</code>, <code>success</code> and <code>error</code>.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -755,6 +761,9 @@ All the parameters are mandatory except <code>payload</code>, <code>success</cod
 </li>
 <li>
 <p><code><strong>payload</strong></code> (<em>string</em>|<em>object</em>) Message payload to send. Either a string or an object that will be serialized as JSON.</p>
+</li>
+<li>
+<p><code><strong>subject</strong></code> (<em>string</em>) <em>Optional.</em> VAPID <code>sub</code> claim — a <code>mailto:</code> or <code>https:</code> contact URI identifying the sender to the push service.</p>
 </li>
 <li>
 <p><code><strong>success</strong></code> (<em>function</em>) A function to be called if the sending succeeds. The function gets passed the status from the HTTP request made.</p>
@@ -850,7 +859,7 @@ notifications.sendAsync({
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-07-03 06:37:36 UTC
+Last updated 2026-07-03 06:57:54 UTC
 </div>
 </div>
 </body>
