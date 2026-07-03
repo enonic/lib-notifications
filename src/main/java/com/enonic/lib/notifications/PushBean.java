@@ -11,6 +11,7 @@ import org.apache.http.HttpResponse;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.jose4j.lang.JoseException;
 
+import nl.martijndwars.webpush.Encoding;
 import nl.martijndwars.webpush.Notification;
 import nl.martijndwars.webpush.PushService;
 import nl.martijndwars.webpush.Utils;
@@ -61,7 +62,7 @@ public final class PushBean
         pushService.setPublicKey( Utils.loadPublicKey( publicKey ) );
         pushService.setPrivateKey( Utils.loadPrivateKey( privateKey ) );
 
-        final HttpResponse httpResponse = pushService.send( notification );
+        final HttpResponse httpResponse = pushService.send( notification, Encoding.AES128GCM );
         return httpResponse.getStatusLine().getStatusCode();
     }
 
