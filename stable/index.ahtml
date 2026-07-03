@@ -489,7 +489,7 @@ Versions 3.x target XP 8+.
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-groovy" data-lang="groovy">dependencies {
-  include 'com.enonic.lib:lib-notifications:3.0.0'
+  include 'com.enonic.lib:lib-notifications:3.0.2'
 }</code></pre>
 </div>
 </div>
@@ -859,7 +859,7 @@ notifications.sendAsync({
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-07-03 07:48:51 UTC
+Last updated 2026-07-03 07:52:32 UTC
 </div>
 </div>
 </body>
